@@ -14,7 +14,7 @@
 		exports["arvouxBackgroundImage"] = factory(require("@angular/core"), require("@angular/common"));
 	else
 		root["arvouxBackgroundImage"] = factory(root["ng"]["core"], root["ng"]["common"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_3__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_0__, __WEBPACK_EXTERNAL_MODULE_1__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -77,7 +77,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -88,6 +88,12 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_0__;
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -96,11 +102,11 @@ function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(2));
+__export(__webpack_require__(3));
 
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -113,7 +119,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var common_1 = __webpack_require__(3);
+var common_1 = __webpack_require__(1);
 var background_image_1 = __webpack_require__(4);
 var ArvouxBackgroundImageModule = (function () {
     function ArvouxBackgroundImageModule() {
@@ -138,12 +144,6 @@ exports.ArvouxBackgroundImageModule = ArvouxBackgroundImageModule;
 
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
-
-/***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -158,17 +158,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
+var common_1 = __webpack_require__(1);
 var BackgroundImageDirective = (function () {
-    function BackgroundImageDirective(ElementRef) {
+    function BackgroundImageDirective(ElementRef, platform_id) {
         this.ElementRef = ElementRef;
+        this.platform_id = platform_id;
         this.server_url = true;
         this.pos_cover = true;
         this.shadow = true;
         this.resize = 0;
     }
     BackgroundImageDirective.prototype.ngOnInit = function () {
+        if (!common_1.isPlatformBrowser(this.platform_id))
+            return;
         var el = this.ElementRef.nativeElement;
         this.SetBackgroundImage();
         if (this.pos_cover)
@@ -217,7 +224,8 @@ var BackgroundImageDirective = (function () {
         core_1.Directive({
             selector: '[background-image]',
         }),
-        __metadata("design:paramtypes", [core_1.ElementRef])
+        __param(1, core_1.Inject(core_1.PLATFORM_ID)),
+        __metadata("design:paramtypes", [core_1.ElementRef, Object])
     ], BackgroundImageDirective);
     return BackgroundImageDirective;
 }());

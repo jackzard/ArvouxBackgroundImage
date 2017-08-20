@@ -1,13 +1,17 @@
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Inject, Input, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from "@angular/common";
 var BackgroundImageDirective = (function () {
-    function BackgroundImageDirective(ElementRef) {
+    function BackgroundImageDirective(ElementRef, platform_id) {
         this.ElementRef = ElementRef;
+        this.platform_id = platform_id;
         this.server_url = true;
         this.pos_cover = true;
         this.shadow = true;
         this.resize = 0;
     }
     BackgroundImageDirective.prototype.ngOnInit = function () {
+        if (!isPlatformBrowser(this.platform_id))
+            return;
         var el = this.ElementRef.nativeElement;
         this.SetBackgroundImage();
         if (this.pos_cover)
@@ -36,6 +40,7 @@ var BackgroundImageDirective = (function () {
     /** @nocollapse */
     BackgroundImageDirective.ctorParameters = function () { return [
         { type: ElementRef, },
+        { type: undefined, decorators: [{ type: Inject, args: [PLATFORM_ID,] },] },
     ]; };
     BackgroundImageDirective.propDecorators = {
         'url': [{ type: Input, args: ['bg-url',] },],

@@ -1,4 +1,5 @@
-import {Directive, ElementRef, Input, OnInit} from '@angular/core'
+import {Directive, ElementRef, Inject, Input, OnInit, PLATFORM_ID} from '@angular/core'
+import {isPlatformBrowser} from "@angular/common";
 
 @Directive({
   selector: '[background-image]',
@@ -15,10 +16,12 @@ export class BackgroundImageDirective implements OnInit {
 
   constructor(
     private ElementRef: ElementRef,
+    @Inject(PLATFORM_ID) private platform_id
   ) {
   }
 
   ngOnInit() {
+    if (!isPlatformBrowser(this.platform_id)) return
     const el = this.ElementRef.nativeElement
 
     this.SetBackgroundImage()
