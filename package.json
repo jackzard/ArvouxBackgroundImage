@@ -2,9 +2,9 @@
   "name": "@arvoux/background-image",
   "version": "1.0.0",
   "description": "Arvoux Background Image Plugin",
-  "main": "./dist/bundles/ArvouxBackgroundImage.umd.js",
-  "module": "./index.js",
-  "typings": "./index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
   "scripts": {
     "start": "concurrently --raw \"webpack-dev-server --open\" \"npm run test:watch\"",
     "build:demo": "webpack --env=production",
