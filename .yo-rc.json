@@ -1,0 +1,14 @@
+{
+  "generator-angular-library": {
+    "githubUsername": "jackzard",
+    "githubRepoName": "ArvouxBackgroundImage",
+    "npmModuleName": "ArvouxBackgroundImage",
+    "moduleGlobal": "arvouxBackgroundImage",
+    "ngModuleName": "ArvouxBackgroundImageModule",
+    "selectorPrefix": "arv",
+    "projectTitle": "ArvouxBackgroundImage",
+    "projectDescription": "",
+    "authorName": "jackzard",
+    "packageManager": "npm"
+  }
+}
